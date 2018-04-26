@@ -41,11 +41,11 @@ Letter.prototype.findMatches = function (userGuess, computerArray) {
 let computerWord = new Word(computerChoices);
 let computerGuess = computerWord.selectedWord;
 
-console.log(computerGuess);
+// console.log(computerGuess);
 
 computerArray = computerWord.splitWord(computerGuess);
-
-console.log(computerArray);
+//
+// console.log(computerArray);
 
 displayArray = computerWord.emptyDisplayWord(computerArray.length);
 console.log(displayArray.join(""));
@@ -55,10 +55,10 @@ function resetAll() {
 
     count = 0;
     guessCount=15;
-    console.log(`\n Guess count: + ${guessCount} + \n`);
+    // console.log(`\n Guess count: + ${guessCount} + \n`);
     guessSoFar= [];
-    console.log(`\n Guesses so far + ${guessSoFar}`);
-    console.log(displayArray.join(""));
+    // console.log(`\n Guesses so far + ${guessSoFar}`);
+    // console.log(displayArray.join(""));
 
 }
 
@@ -71,20 +71,26 @@ let askQuestion = function () {
                 name: "userGuess",
                 message:"What letter do you choose? "
             }
+
+            // promise
         ]).then(function (answers) {
+
             let newLetter = answers.userGuess;
-            if(guessSoFar.indexOf(newLetter) <0){
+
+            if(guessSoFar.indexOf(newLetter) < 0){
                 guessSoFar.push(newLetter);
             }
 
             console.log("---Guesses so far --[" +guessSoFar.join(",") + "]-----");
 
-            guessCount--
+            guessCount--;
 
             console.log("----Guess count:" + guessCount + "--------");
             console.log("");
 
-            let matches = computerWord.checkAnswer(newLetter,computerArray);
+            let matches = computerWord.CheckAnswer(newLetter,computerArray);
+            // console.log("it works");
+            // debugger;
 
             displayArray = computerWord.displayLetters;
 
@@ -93,6 +99,7 @@ let askQuestion = function () {
 
             if (matches == 0) {
                 console.log("You won!!! :)");
+
                 resetAll()
             }
             else {
@@ -102,7 +109,8 @@ let askQuestion = function () {
     });
 
     }
-    else { inquirer.prompt([
+    else {
+        inquirer.prompt([
         {
             type: "confirm",
             message:" would you like to end game",
@@ -110,11 +118,12 @@ let askQuestion = function () {
             default: true
 
         }
-    ]).then(function (answer) {
-        if (answer.confirm){
+    ]).then(function(answer) {
+        if (answer.confirm) {
             resetAll();
 
-        }  else {
+        }
+        else {
             console.log("too bad! =/")
             resetAll();
         }
