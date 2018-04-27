@@ -22,7 +22,7 @@ let Word = function (computerChoices) {
     };
 
     this.CheckAnswer = function(UserGuess,computerArray){
-        let guessLetter = new Letter(userGuess);
+        let guessLetter = new Letter(UserGuess);
         console.log(guessLetter);
 
         let matchIndex = guessLetter.findMatches(guessLetter,computerArray);

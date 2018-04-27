@@ -2,7 +2,7 @@
 
 let Word = require("./word.js");
 
-let Letter = require("./letter.js")
+let Letter = require("./letter.js");
 
 let inquirer = require("inquirer");
 
@@ -69,12 +69,12 @@ let askQuestion = function () {
         inquirer.prompt([
             {
                 name: "userGuess",
-                message:"What letter do you choose? "
+                message: "What letter do you choose? "
             }
 
             // promise
         ]).then(function (answers) {
-
+            //
             let newLetter = answers.userGuess;
 
             if(guessSoFar.indexOf(newLetter) < 0){
@@ -97,7 +97,7 @@ let askQuestion = function () {
             console.log(displayArray.join(""));
             console.log("");
 
-            if (matches == 0) {
+            if (matches === 0) {
                 console.log("You won!!! :)");
 
                 resetAll()
@@ -115,7 +115,7 @@ let askQuestion = function () {
             type: "confirm",
             message:" would you like to end game",
             name: "end",
-            default: true
+            default: false
 
         }
     ]).then(function(answer) {
